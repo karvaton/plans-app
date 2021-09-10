@@ -1,13 +1,21 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// бібліотеки
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./App.css";
-import Bank from "./components/Bank";
-// import Planes from "./components/Planes";
+// стилі
+import "./styles/App.css";
+// компоненти
+import Menu from "./components/Menu";
+import Content from "./components/Content";
+import Planes from "./components/plans/Plans";
+import Dialog from "./components/dialogs/Dialog";
 
 function App() {
     return (
         <div className="App">
-            <Bank />
+            <Menu />
+            <Content title="Список планів">
+                <Planes />
+            </Content>
+            <Dialog />
         </div>
     );
 }

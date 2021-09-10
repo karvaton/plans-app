@@ -1,0 +1,53 @@
+.App {
+    min-height: 100vh;
+    background-color: var(--light-green);
+    display: flex;
+    padding: 1em 2em;
+}
+
+aside {
+    flex: 1;
+    margin: 20px 10px;
+}
+
+menu, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+aside menu {
+    margin: 20px 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 5px
+}
+
+button {
+    background-color: var(--dark-blue);
+    color: var(--light);
+    border: solid 1px var(--dark-blue);
+    border-radius: 5px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+menu button {
+    /* height: 100%; */
+    width: 100%;
+}
+
+
+main {
+    flex: 3;
+    margin: 0 20px;
+}
+
+main h2 {
+    margin: 0;
+    padding: 0 10px;
+    color: var(--dark-blue);
+}

@@ -1,35 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+
+import './styles/index.css';
+import App from './App';
 import { Provider } from 'react-redux';
+import store from "./state/store";
 
-const defatultState = {
-    cash: 8
-}
-
-const reduser = (state = defatultState, action) => {
-    switch (action.type) {
-        case 'GET_CASH':
-            return {
-                ...state,
-                cash: state.cash - action.cash
-            };
-
-        case 'ADD_CASH':
-            return {
-                ...state,
-                cash: state.cash + action.cash
-            };
-    
-        default:
-            return state;
-    }
-}
-
-const store = createStore(reduser);
 
 ReactDOM.render(
     <React.StrictMode>

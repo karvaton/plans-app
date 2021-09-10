@@ -1,0 +1,11 @@
+.plans-list {
+    margin: 20px 0;
+}
+
+.plan {
+    background-color: var(--dark-blue);
+    border: double 5px var(--light-green);
+    border-radius: 10px;
+    padding: 5px;
+    color: var(--light);
+}
