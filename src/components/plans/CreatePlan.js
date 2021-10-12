@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { open, close } from "../../state/actions/dialog";
+import { open } from "../../state/actions/dialog";
 
 
 export function Button() {
@@ -12,21 +12,9 @@ export function Button() {
 }
 
 export function Dialog() {
-    const dispatch = useDispatch();
-
     return (
-        <div>
-            <div>
-                <button 
-                    className="close"
-                    onClick={() => dispatch(close)}
-                >x</button>
-            </div>
-            <button className="ok">Додати</button>
-            <button 
-                className="cancel"
-                onClick={() => dispatch(close)}
-            >Скасувати</button>
+        <div className="create-plan">
+            <textarea></textarea>
         </div>
     );
 };

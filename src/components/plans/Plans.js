@@ -1,4 +1,4 @@
-import '../../styles/plans.css';
+import '../../styles/plans.sass';
 import { useSelector } from "react-redux";
 import { PropTypes } from 'prop-types';
 import Plan from './Plan';

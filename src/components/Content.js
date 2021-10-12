@@ -1,8 +1,8 @@
+import Path from "./Path";
+
 const Content = ({title, children}) => (
     <main>
-        <h2>
-            {title}
-        </h2>
+        <Path />
         {children}
     </main>
 );

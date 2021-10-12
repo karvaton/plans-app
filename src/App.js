@@ -1,7 +1,7 @@
 // бібліотеки
 import "bootstrap-icons/font/bootstrap-icons.css";
 // стилі
-import "./styles/App.css";
+import "./styles/App.sass";
 // компоненти
 import Menu from "./components/Menu";
 import Content from "./components/Content";
@@ -12,7 +12,7 @@ function App() {
     return (
         <div className="App">
             <Menu />
-            <Content title="Список планів">
+            <Content>
                 <Planes />
             </Content>
             <Dialog />
