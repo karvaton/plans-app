@@ -1,5 +1,6 @@
 .App {
     min-height: 100vh;
+    box-sizing: border-box;
     background-color: var(--light-green);
     display: flex;
     padding: 1em 2em;
@@ -25,9 +26,9 @@ li {
 }
 
 button {
-    background-color: var(--dark-blue);
+    background-color: var(--dark-green);
     color: var(--light);
-    border: solid 1px var(--dark-blue);
+    border: solid 1px var(--dark-green);
     border-radius: 5px;
     padding: 10px;
     text-transform: uppercase;
