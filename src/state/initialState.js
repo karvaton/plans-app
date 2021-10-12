@@ -1,6 +1,7 @@
 const defatultState = {
-    plans: ['apple', 'banana'],
+    plans: [],
     dialog: null,
+    path: ['Список планів']
 };
 
 export default defatultState;
