@@ -1,0 +1,30 @@
+@use 'constants'
+@use 'ext'
+    
+.path
+    display: flex
+    flex-wrap: wrap
+    margin: 0
+    padding: 0 //10px
+    font-weight: bold
+    font-size: 12px
+    border-bottom: solid 1px constants.$dark
+
+    li
+        margin: 2px
+        &:not(:last-child)::after
+            content: '/'
+            display: inline-block
+            margin-left: 4px
+            color: constants.$dark-blue
+
+    span
+        color: constants.$dark-blue
+        text-decoration: none
+        cursor: pointer
+        font-style: italic
+        &:hover
+            text-decoration: underline
+            color: lighten(constants.$dark-blue, 10%)
+        &:active
+            color: darken(constants.$dark-blue, 5%)

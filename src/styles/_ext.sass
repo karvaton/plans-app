@@ -1,11 +1,9 @@
-// @forward 'sass:color'
 @use 'sass:color'
-//, 'constants'
 
 @mixin set-color($color)
     background-color: $color
     border-color: darken($color, 5%)
-    @if lightness($color) < 50%
+    @if lightness($color) < 60%
         color: #fff//constants.light
     @else 
         color: #000//constants.dark-blue

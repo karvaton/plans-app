@@ -1,12 +1,90 @@
-@import 'constants'
+@use 'constants'
+
+#plans-list
+    padding: 10px
+    border: solid 1px #fff
+    color: constants.$dark-blue
+    &.active-plan
+        border-color: constants.$smoke
+
+    h3
+        margin: 5px
+    
 
 .plans-list
     margin: 20px 0
 
 
+.plan, .add-plan
+    background-color: constants.$light
+    // border: double 5px constants.$light
+    border-radius: 3px
+    padding: 5px 0
+    color: constants.$dark
+
 .plan
-    background-color: $dark-blue
-    border: double 5px $light-green
-    border-radius: 10px
-    padding: 5px
-    color: $light
+    position: relative
+    box-shadow: 1px 1px 4px -1px constants.$dark
+    *
+        box-sizing: border-box
+
+    h5, p
+        margin: 0
+        padding: 5px 10px
+
+    h5 span
+        cursor: pointer
+        &:hover
+            text-decoration: underline
+
+    .add-plan-description
+        font-size: 12px
+        padding: 7px 10px
+
+    .delete-plan
+        position: absolute
+        top: 2px
+        right: 2px
+        margin: 2px
+        padding: 2px
+        background-color: #fff
+        border: solid 1px #fff
+        border-radius: 3px
+        color: constants.$grey
+        cursor: pointer
+        &:hover
+            border-color: constants.$grey
+            color: #333
+        div
+            font-weight: 700
+            font-size: 19px
+            line-height: 12px
+            width: 12px
+
+    ol
+        font-size: 14px
+        margin: 5px
+        margin-left: 20px
+        &:first
+            text-decoration: underline
+    .task
+        list-style: decimal
+        // text-decoration: 
+        font-size: 12px
+        margin: 5px
+
+
+
+.add-plan form
+    display: flex
+    align-items: center
+
+    input
+        padding: 5px 10px
+        margin: 5px 0
+
+    .add-plan-title
+        flex: 1
+
+    .ok
+        margin: 5px

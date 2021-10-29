@@ -1,17 +1,19 @@
 @use 'sass:color'
 @use 'ext'
-@import 'constants'
+@use 'constants'
 
 .App
     min-height: 100vh
-    background-color: $light-green
+    background-color: constants.$light
     display: flex
-    padding: 1em 2em
+    box-sizing: border-box
+    padding-top: 30px
 
 
 aside
     flex: 1
-    margin: 20px 10px
+    margin: 30px 10px
+    margin-left: 10%
 
 
 menu, ul, ol
@@ -25,10 +27,11 @@ aside menu
 
 li
     list-style-type: none
-    margin: 5px
+    margin: 0
+    margin-bottom: 15px
 
 
-button
+button.big-btn
     border-radius: 5px
     padding: 10px
     text-transform: uppercase
@@ -36,8 +39,8 @@ button
     letter-spacing: 1px
     border: solid 2px //darken($dark-green, 5%)
     // background-color: $dark-green
-    // color: $light
-    @include ext.set-color($dark-green)
+    color: constants.$light
+    @include ext.set-color(constants.$dark-blue)
     
 
 
@@ -49,11 +52,4 @@ menu button
 
 main
     flex: 3
-    margin: 0 20px
-
-
-main h3
-    margin: 0
-    padding: 0 10px
-    color: $dark-blue
-
+    padding: 0 20%
