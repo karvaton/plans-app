@@ -5,7 +5,7 @@ export const open = dialogName => ({
     payload: dialogName,
 });
 
-export const close = {
+export const close = () => ({
     type: types.dialog.CLOSE,
     payload: null,
-};
+});

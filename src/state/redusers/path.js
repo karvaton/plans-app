@@ -5,11 +5,10 @@ const pathReducer = (path = [...initialState.path], {type, payload}) => {
     switch (type) {
         case types.path.OPEN:
             path.push(payload);
-            return path;
+            return [...path];
 
         case types.path.CLOSE:
-            path.pop();
-            return path;
+            return path.slice(0, payload);
     
         default:
             return path;
