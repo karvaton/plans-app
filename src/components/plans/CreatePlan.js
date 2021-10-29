@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { open } from "../../state/actions/dialog";
+import { open, close } from "../../state/actions/dialog";
+import { add } from "../../state/actions/plans";
 
 
 export function Button() {
@@ -11,10 +13,31 @@ export function Button() {
     );
 }
 
-export function Dialog() {
+export function Dialog({ complete, editing }) {
+    const dispatch = useDispatch();
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+
+    useEffect(() => {
+        if (complete) {
+            dispatch(add({ title, description }));
+            editing(false);
+            dispatch(close());
+        }
+    })
+
     return (
-        <div className="create-plan">
-            <textarea></textarea>
-        </div>
+        <form className="create-plan">
+            <label>Заголовок</label>
+            <input
+                name="plan-title"
+                onChange={(e) => setTitle(e.target.value)}
+            />
+            <label>Опис</label>
+            <textarea
+                name="plan-description"
+                onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+        </form>
     );
 };

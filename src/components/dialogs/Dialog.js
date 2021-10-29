@@ -1,15 +1,20 @@
 import '../../styles/dialog.sass';
+import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { close } from "../../state/actions/dialog";
 import * as CreatePlan from "../plans/CreatePlan";
 
 function Dialog() {
-    const dialog = useSelector(state => state.dialog);
     const dispatch = useDispatch();
+    const dialog = useSelector(state => state.dialog);
 
-    let dialogWindow = null;
-    if (dialog === 'add') {
-        dialogWindow = <CreatePlan.Dialog />
+    const [done, setDone] = useState(false);
+
+    const dialogWindow = 
+        dialog === 'add' ? <CreatePlan.Dialog complete={done} editing={setDone} /> : null;
+
+    function submit() {
+        setDone(true);
     }
     
     return (
@@ -19,20 +24,20 @@ function Dialog() {
                     <div className="dialog-header">
                         <button
                             className="close"
-                            onClick={() => dispatch(close)}
+                            onClick={() => dispatch(close())}
                         >
                             x
                         </button>
                     </div>
                     {dialog && dialogWindow}
                     <div className="dialog-footer">
-                        <button className="ok">Додати</button>
                         <button
                             className="cancel"
-                            onClick={() => dispatch(close)}
+                            onClick={() => dispatch(close())}
                         >
                             Скасувати
                         </button>
+                        <button className="ok" onClick={() => submit()}>Додати</button>
                     </div>
                 </div>
             </dialog>
