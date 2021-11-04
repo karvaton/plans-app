@@ -10,14 +10,10 @@ function Plan({ plan }) {
 
     return (
         <li className="plan">
-            <h5>
+            <h4>
                 <span onClick={() => dispatch(openPath(id))}>{title}</span>
-            </h5>
-            {description ? (
-                <p className="plan-description">{description}</p>
-            ) : (
-                <p className="add-plan-description">[Додати опис]</p>
-            )}
+            </h4>
+            <p className="plan-description">{description || ''}</p>
             {tasks.length ? (
                 <ol>
                     <u>Задачі</u>

@@ -14,12 +14,12 @@ export function findPlanByPath(plans: Plan[], path: string[]): Plan {
     }
 }
 
-export function findPlanById(id: string, plans: Plan[]): string {
+export function findPlanById(id: string, plans: Plan[]): Plan {
     plans = plans ? [...plans] : store.getState().plans;
 
     const plan = plans.filter(plan => plan.id === id)[0];
     if (plan) {
-        return plan.title;
+        return plan;
     } else {
         const taskDeque: Plan[] = [];
         plans.forEach(({tasks}) => taskDeque.push(...tasks));

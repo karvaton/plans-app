@@ -1,6 +1,8 @@
 export const plan = {
     ADD: 'plans/add',
     REMOVE: 'plans/remove',
+    EDIT: 'plans/edit',
+    SAVE: 'plans/save'
 };
 
 export const dialog = {

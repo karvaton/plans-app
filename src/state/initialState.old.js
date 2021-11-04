@@ -1,7 +1,7 @@
-import { defaulState } from "../constants/constants";
+import { defaultState } from "../constants/constants";
 
-localStorage.clear();
-const state = localStorage.getItem("state") || defaulState;
+// localStorage.clear();
+const state = localStorage.getItem("state") || defaultState;
 const savedState = JSON.parse(state) || [];
 
 const initialState = {

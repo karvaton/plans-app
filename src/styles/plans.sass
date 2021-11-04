@@ -4,13 +4,54 @@
     padding: 10px
     border: solid 1px #fff
     color: constants.$dark-blue
+    position: relative
     &.active-plan
         border-color: constants.$smoke
+    .icon-edit
+        position: absolute
+        margin: 3px
+        top: 0
+        right: 0
+        cursor: pointer
+        &:hover
+            background-color: #e0e5e9
+            border: solid 1px #bdc3ca
+            path
+                stroke: constants.$dark-blue
 
-    h3
-        margin: 5px
+// форма редагування плану
+.plan-editing
+    display: flex
+    flex-direction: column
+    .plan-title
+        color: constants.$dark-blue
+        font-size: 1.17em
+        font-family: inherit
+        font-weight: bold
+    .plan-title, .plan-description
+        padding: 5px
+        background-color: #f4f3f2
+        border: solid 1px #fff0
+        &:focus
+            outline: none
+            border-bottom: solid 1px constants.$grey
+    .plan-description
+        margin: 5px 0
+    .controll-buttons
+        align-self: flex-end
+        display: flex
+        gap: 5px
     
+.plan-header
+    // margin-right: 25px
+    h3
+        margin: 5px 0
+        padding: 5px
+    span
+        padding: 5px
+        font-size: 14px
 
+// список планів
 .plans-list
     margin: 20px 0
 
@@ -22,24 +63,30 @@
     padding: 5px 0
     color: constants.$dark
 
+.add-plan-description
+    font-size: 12px
+    padding: 7px 5px
+    color: constants.$grey
+
 .plan
     position: relative
     box-shadow: 1px 1px 4px -1px constants.$dark
     *
         box-sizing: border-box
 
-    h5, p
+    h4, h5, p
         margin: 0
         padding: 5px 10px
 
-    h5 span
+    span
         cursor: pointer
         &:hover
             text-decoration: underline
 
-    .add-plan-description
-        font-size: 12px
-        padding: 7px 10px
+    .plan-description
+        font-size: 14px
+        font-style: italic
+        // margin: 0 8px
 
     .delete-plan
         position: absolute

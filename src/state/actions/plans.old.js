@@ -5,7 +5,7 @@ export const add = (plan, path) => ({
     payload: {
         plan: {
             ...plan,
-            id: Date.now().toString(16),
+            id: Math.trunc(Date.now()/1000).toString(16),
         },
         path,
     },
