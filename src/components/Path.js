@@ -2,6 +2,7 @@ import '../styles/path.sass';
 import { useDispatch, useSelector } from "react-redux";
 import { findPlanById, findPlanByPath } from '../tools/planSearch';
 import { closePath, save } from '../state/actions/plans';
+import Icon from "./common/Icon";
 
 function Path() {
     const dispatch = useDispatch();
@@ -22,8 +23,13 @@ function Path() {
         }
     }
 
-    return (
-        <nav className="path">
+    function back() {
+        const upperPathStep = path.length - 2;
+        moveTo(upperPathStep);
+    }
+
+    return ([
+        <nav key="path" className="path">
             <li>
                 <span onClick={() => moveTo()}>Список планів</span>
             </li>
@@ -32,8 +38,11 @@ function Path() {
                     <span onClick={() => moveTo(index)}>{pathTitles[index]}</span>
                 </li>
             ))}
-        </nav>
-    );
+        </nav>,
+        path.length ? (
+            <Icon key="back" type="arrowLeft" click={() => back()} />
+        ) : null
+    ]);
 }
 
 export default Path;

@@ -2,7 +2,10 @@ export const plan = {
     ADD: 'plans/add',
     REMOVE: 'plans/remove',
     EDIT: 'plans/edit',
-    SAVE: 'plans/save'
+    SAVE: 'plans/save',
+    CHECK: 'plans/check',
+    CHECK_ALL: 'plans/check_all',
+    TOGGLE_CHECK: 'plans/toggle_check'
 };
 
 export const dialog = {

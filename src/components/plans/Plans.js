@@ -13,6 +13,7 @@ function Plans() {
     const plans = useSelector(state => state.plans);
     const path = useSelector(state => state.path);
     const plan = path.length ? findPlanByPath(plans, path) : null;
+    // console.log(plans[1].checked);
     const tasks = plan ? [...plan.tasks] : [...plans];
     const editing = plan ? plan.editing : false;
     // dispatcher

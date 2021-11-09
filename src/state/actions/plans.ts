@@ -34,6 +34,15 @@ export const save = (
     payload: { id, path, edits },
 });
 
+export const check = (id: string, path: string[]): Action => ({
+    type: types.plan.CHECK,
+    payload: { id, path },
+});
+
+export const checkAll = (checked: boolean): Action => ({
+    type: types.plan.CHECK_ALL,
+    payload: { checked },
+});
 
 // Actions with path
 export const openPath = (path: string[]): Action => ({
