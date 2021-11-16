@@ -1,13 +1,11 @@
-import { compose, createStore } from "redux";
-import rootReduser from './redusers/rootReduser';
+import prodStore from './stores/configureStore.prod';
+import devStore from './stores/configureStore.dev';
 import initialState from './initialState';
 
+const store = process.env.NODE_ENV === 'production'
+    ? prodStore(initialState)
+    : devStore(initialState);
 
-const store = createStore(
-    rootReduser,
-    initialState,
-    compose(window.__REDUX_DEVTOOLS_EXTENSION__())
-);
 
 function getStateString() {
     const state = store.getState().plans;
@@ -15,7 +13,7 @@ function getStateString() {
 }
 
 store.subscribe(() => {
-    localStorage.setItem('state', getStateString());
+    localStorage.setItem("state", getStateString());
 });
 
 export default store;

@@ -4,10 +4,10 @@ export interface Action {
 }
 
 export interface Plan {
-    title: string,
     id: string,
+    description: string,
+    title?: string,
     tasks: Plan[],
-    description?: string,
     editing?: boolean,
     checked?: boolean,
 }

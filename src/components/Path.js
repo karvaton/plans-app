@@ -4,11 +4,12 @@ import { findPlanById, findPlanByPath } from '../tools/planSearch';
 import { closePath, save } from '../state/actions/plans';
 import Icon from "./common/Icon";
 
+
 function Path() {
     const dispatch = useDispatch();
     const path = useSelector(state => state.path);
     const plans = useSelector(state => state.plans);
-    const pathTitles = path.map(item => findPlanById(item).title);
+    const plansPath = path.map(item => findPlanById(item));
     const activePlan = path.length
         ? findPlanByPath(plans, path)
         : { editing: false };
@@ -28,6 +29,12 @@ function Path() {
         moveTo(upperPathStep);
     }
 
+    function getPathPart(index) {
+        const {title, description} = plansPath[index];
+        console.log(title, description);
+        return title || description;
+    }
+
     return ([
         <nav key="path" className="path">
             <li>
@@ -35,7 +42,7 @@ function Path() {
             </li>
             {path.map((item, index) => (
                 <li key={item}>
-                    <span onClick={() => moveTo(index)}>{pathTitles[index]}</span>
+                    <span onClick={() => moveTo(index)}>{getPathPart(index)}</span>
                 </li>
             ))}
         </nav>,

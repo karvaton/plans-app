@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../state/actions/plans";
 
 function AddPlan() {
-    const [planTitle, setPlanTitle] = useState('');
+    const [planTitle, setPlanText] = useState('');
     const path = useSelector(state => state.path);
     const dispatch = useDispatch();
 
-    function finish(title) {
-        if (title) {
-            dispatch(add({title}, path));
+    function finish(description) {
+        if (description) {
+            dispatch(add({description}, path));
         }
-        setPlanTitle('');
+        setPlanText('');
     }
 
     return (
@@ -21,7 +21,7 @@ function AddPlan() {
                     type="text"
                     className="add-plan-title"
                     value={planTitle}
-                    onChange={(e) => setPlanTitle(e.target.value)}
+                    onChange={(e) => setPlanText(e.target.value)}
                     placeholder="Що хочеш запланувати?"
                 />
                 <input

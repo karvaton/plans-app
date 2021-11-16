@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-type PlanProps = {
+interface PlanProps {
     title?: string
     description?: string
 }
 
-interface EditProps {
+type EditProps = {
     title: string
     description?: string
     save: (plan: PlanProps) => void

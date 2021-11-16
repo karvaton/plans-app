@@ -48,11 +48,11 @@ const plansReducer = (state = [...defatultState.plans], { type, payload }: Actio
             } else {
                 return state.map(plan => {
                     if (plan.id === payload.id) {
-                        const {title, description} = payload.edits;
+                        const desc = payload.edits.description;
                         return {
                             ...plan,
-                            description,
-                            title: title || plan.title,
+                            description: desc || plan.description,
+                            title: payload.edits.title,
                             editing: false,
                         }
                     }

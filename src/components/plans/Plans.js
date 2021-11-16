@@ -13,14 +13,13 @@ function Plans() {
     const plans = useSelector(state => state.plans);
     const path = useSelector(state => state.path);
     const plan = path.length ? findPlanByPath(plans, path) : null;
-    // console.log(plans[1].checked);
     const tasks = plan ? [...plan.tasks] : [...plans];
     const editing = plan ? plan.editing : false;
     // dispatcher
     const dispatch = useDispatch();
     // controllers
     function saveEdits(planProps = {}) {
-        const {title, description = ''} = planProps;
+        const {title = '', description} = planProps;
         const upperPath = [...path].slice(0, -1);
         dispatch(save(plan.id, upperPath, { title, description }));
     }
@@ -54,7 +53,7 @@ function Plans() {
                     />
                 ) : (
                     <div className="plan-header">
-                        <h3 onDoubleClick={() => startEdit()}>{plan?.title}</h3>
+                        <h3 onDoubleClick={() => startEdit()}>{plan.title}</h3>
                         {planDescription}
                     </div>
                 )

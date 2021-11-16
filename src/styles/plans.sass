@@ -1,10 +1,11 @@
 @use 'constants'
 
 #plans-list
-    padding: 10px
+    // padding: 10px
     border: solid 1px #fff
     color: constants.$dark-blue
     position: relative
+    margin-bottom: 20px
     &.active-plan
         border-color: constants.$smoke
     .icon-edit
@@ -52,8 +53,9 @@
         font-size: 14px
 
 // список планів
-.plans-list
+ul.plans-list
     margin: 20px 0
+    padding: 10px
 
 
 .plan, .add-plan
@@ -128,9 +130,15 @@
 
 
 
-.add-plan form
-    display: flex
-    align-items: center
+.add-plan 
+    position: sticky
+    bottom: 10px
+    margin: 0 -10px
+    
+
+    form
+        display: flex
+        align-items: center
 
     input
         padding: 5px 10px

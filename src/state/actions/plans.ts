@@ -45,7 +45,7 @@ export const checkAll = (checked: boolean): Action => ({
 });
 
 // Actions with path
-export const openPath = (path: string[]): Action => ({
+export const openPath = (path: string): Action => ({
     type: types.path.OPEN,
     payload: path
 });
