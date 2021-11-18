@@ -10,7 +10,6 @@ function getTitle(text: string): string {
     return text;
 }
 
-
 function Plan({plan}: PlanProps) {
     const dispatch = useDispatch();
     const path: string[] = useSelector((state: State) => state.path);
@@ -33,7 +32,7 @@ function Plan({plan}: PlanProps) {
             {tasks.length ? (
                 <ol>
                     <u>Задачі</u>
-                    {tasks.map(({ title, id, checked }) => (
+                    {tasks.map(({ title, description, id, checked }) => (
                         <Task key={id} text={title || description} checked={checked} />
                     ))}
                 </ol>

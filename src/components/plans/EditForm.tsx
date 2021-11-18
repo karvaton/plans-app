@@ -18,7 +18,13 @@ function EditFrom(props: EditProps) {
     
     return (
         <form className="plan-editing plan-header">
-            <input type="text" className="plan-title" value={title} onChange={e => changeTitle(e.target.value)} autoFocus />
+            <input 
+                type="text" 
+                className="plan-title" 
+                value={title} 
+                onChange={e => changeTitle(e.target.value)} 
+                autoFocus 
+            />
             <div 
                 contentEditable="true"
                 className="plan-description" 
@@ -37,6 +43,7 @@ function EditFrom(props: EditProps) {
                     className="done" 
                     value="Зберегти" 
                     onClick={() => props.save({title, description})}
+                    disabled={!description && !title}
                 />
             </div>
         </form>
