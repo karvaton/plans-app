@@ -3,7 +3,7 @@
 @use 'constants'
 
 .App
-    min-height: 100vh
+    height: 100vh
     background-color: constants.$light
     display: flex
     box-sizing: border-box
@@ -53,6 +53,9 @@ menu button
 main
     flex: 3
     padding: 0 20%
+    // max-height: 100%
+    display: flex
+    flex-direction: column
 
 textarea.autosize
     resize: none

@@ -15,30 +15,28 @@ function AddPlan() {
     }
 
     return (
-        <li className="add-plan">
-            <form>
-                <input
-                    type="text"
-                    className="add-plan-title"
-                    value={planTitle}
-                    onChange={(e) => setPlanText(e.target.value)}
-                    placeholder="Що хочеш запланувати?"
-                />
-                <input
-                    type="submit"
-                    value="Додати"
-                    className="ok"
-                    onClick={() => finish(planTitle)}
-                    disabled={planTitle === ""}
-                />
-                <input
-                    type="button"
-                    value="Скасувати"
-                    className="cancel"
-                    onClick={() => finish()}
-                />
-            </form>
-        </li>
+        <form className="add-plan">
+            <input
+                type="text"
+                className="add-plan-title"
+                value={planTitle}
+                onChange={(e) => setPlanText(e.target.value)}
+                placeholder="Що хочеш запланувати?"
+            />
+            <input
+                type="submit"
+                value="Додати"
+                className="ok"
+                onClick={() => finish(planTitle)}
+                disabled={planTitle === ""}
+            />
+            <input
+                type="button"
+                value="Скасувати"
+                className="cancel"
+                onClick={() => finish()}
+            />
+        </form>
     );
 }
 

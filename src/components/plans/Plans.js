@@ -8,6 +8,8 @@ import { findPlanByPath } from "../../tools/planSearch";
 import { edit, save } from '../../state/actions/plans';
 import Icon from '../common/Icon';
 import EditFrom from './EditForm';
+import { useEffect, useRef } from 'react';
+
 
 function Plans() {
     const plans = useSelector(state => state.plans);
@@ -17,9 +19,11 @@ function Plans() {
     const editing = plan ? plan.editing : false;
     // dispatcher
     const dispatch = useDispatch();
+    // refs
+    const list = useRef(null);
     // controllers
     function saveEdits(planProps = {}) {
-        const {title = '', description} = planProps;
+        const {title = '', description = ''} = planProps;
         const upperPath = [...path].slice(0, -1);
         dispatch(save(plan.id, upperPath, { title, description }));
     }
@@ -28,18 +32,44 @@ function Plans() {
         const upperPath = [...path].slice(0, -1);
         dispatch(edit(plan.id, upperPath));
     }
+
+    function scrollEffect() {
+        const height = list.current.scrollHeight;
+        const clientHeight = list.current.clientHeight;
+        const top = list.current.scrollTop;
+        const scrolledList = height > clientHeight;
+
+        if (scrolledList) {
+            list.current.classList.remove("scrolled-top");
+            list.current.classList.remove("scrolled-bottom");
+            switch (Math.ceil(top)) {
+                case 0:
+                    list.current.classList.add("scrolled-bottom");
+                    break;
+                case height - clientHeight:
+                    list.current.classList.add("scrolled-top");
+                    break;
+                default:
+                    list.current.classList.add("scrolled-top");
+                    list.current.classList.add("scrolled-bottom");
+                    break;
+            }
+        } else {
+            list.current.classList.remove("scrolled-top");
+            list.current.classList.remove("scrolled-bottom");
+        }
+    }
+    useEffect(() => scrollEffect());
     // variables
     const editBtn = <Icon type="edit" click={startEdit} />;
-    const planDescription = plan && plan.description ? (
-            <span onDoubleClick={() => startEdit()}>
-                {plan.description}
-            </span>
+    const planDescription =
+        plan && plan.description ? (
+            <span onDoubleClick={() => startEdit()}>{plan.description}</span>
         ) : (
-            <p
-                className="add-plan-description"
-                onClick={() => startEdit()}
-            >[Додати опис]</p>
-        )
+            <p onClick={() => startEdit()}>
+                <span className="add-plan-description">[Додати опис]</span>
+            </p>
+        );
 
     return (
         <section id="plans-list" className={path.length ? "active-plan" : ""}>
@@ -60,12 +90,16 @@ function Plans() {
             ) : (
                 <h3>Усі плани</h3>
             )}
-            <ul className="plans-list">
+            <ul
+                ref={list}
+                className="plans-list"
+                onScroll={() => scrollEffect()}
+            >
                 {tasks.map((plan) => (
                     <Plan key={plan.id} plan={plan} />
                 ))}
-                <AddPlan />
             </ul>
+            <AddPlan />
             {path.length && !editing ? editBtn : null}
         </section>
     );

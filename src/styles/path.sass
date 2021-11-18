@@ -24,7 +24,7 @@
         &:not(:first-child)::before
             content: '/'
             display: inline-block
-            padding: 1.5px 0
+            // padding: 1.5px 0
             margin-right: 1px
             color: constants.$dark-blue
         &:not(:only-child)
@@ -32,13 +32,13 @@
                 cursor: pointer
                 text-decoration: underline
                 color: lighten(constants.$dark-blue, 10%)
-                // background-color: opacify(rgba(constants.$dark-blue, 0), 0.2)
-                background-color: #32567933
+                background-color: #07529c1c
+                background-color: opacify(rgba(constants.$dark-blue, 0), 0.1)
 
         span
             display: inline-block
             border-radius: 5px
-            padding: 2px 5px
+            padding: 0 5px
             overflow: hidden
             white-space: nowrap
             text-overflow: ellipsis

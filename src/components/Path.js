@@ -31,7 +31,6 @@ function Path() {
 
     function getPathPart(index) {
         const {title, description} = plansPath[index];
-        console.log(title, description);
         return title || description;
     }
 

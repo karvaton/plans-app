@@ -18,4 +18,6 @@ code {
   --green: #5cdb95;
   --light-green: #8ee4af;
   --light: #edf5e1;
+  --top-shadow: 0;
+  --bottom-shadow: 0;
 }
