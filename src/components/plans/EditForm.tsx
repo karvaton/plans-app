@@ -1,16 +1,6 @@
 import { useState } from "react";
+import { EditProps } from "../../constants/props";
 
-interface PlanProps {
-    title?: string
-    description?: string
-}
-
-type EditProps = {
-    title: string
-    description?: string
-    save: (plan: PlanProps) => void
-    cancel: (plan: PlanProps) => void
-}
 
 function EditFrom(props: EditProps) {
     const [title, changeTitle] = useState(props.title);
