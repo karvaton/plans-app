@@ -1,5 +1,4 @@
 import '../../styles/plans.sass';
-// import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { PropTypes } from 'prop-types';
 import Plan from './Plan';
@@ -9,6 +8,38 @@ import { edit, save } from '../../state/actions/plans';
 import Icon from '../common/Icon';
 import EditFrom from './EditForm';
 import { useEffect, useRef } from 'react';
+import { scrollShadowEffect } from '../../tools/effects';
+import AdaptiveList from '../common/AdaptiveList';
+
+
+// function scrollShadowEffect(ref, ...exeptions) {
+//     const fullHeight = ref.current.scrollHeight;
+//     const visibleHeight = ref.current.clientHeight;
+//     const top = ref.current.scrollTop;
+//     const scrolledList = fullHeight > visibleHeight;
+//     const classList = ref.current.classList;
+//     console.log(top);
+
+//     classList.forEach(classItem => {
+//         if (!exeptions.includes(classItem)) {
+//             classList.remove(classItem);
+//         }
+//     });
+//     if (scrolledList) {
+//         switch (Math.floor(top)) {
+//             case 0:
+//                 classList.add("scrolled-bottom");
+//                 break;
+//             case fullHeight - visibleHeight:
+//                 classList.add("scrolled-top");
+//                 break;
+//             default:
+//                 classList.add("scrolled-top");
+//                 classList.add("scrolled-bottom");
+//                 break;
+//         }
+//     }
+// }
 
 
 function Plans() {
@@ -33,33 +64,7 @@ function Plans() {
         dispatch(edit(plan.id, upperPath));
     }
 
-    function scrollEffect() {
-        const height = list.current.scrollHeight;
-        const clientHeight = list.current.clientHeight;
-        const top = list.current.scrollTop;
-        const scrolledList = height > clientHeight;
-
-        if (scrolledList) {
-            list.current.classList.remove("scrolled-top");
-            list.current.classList.remove("scrolled-bottom");
-            switch (Math.ceil(top)) {
-                case 0:
-                    list.current.classList.add("scrolled-bottom");
-                    break;
-                case height - clientHeight:
-                    list.current.classList.add("scrolled-top");
-                    break;
-                default:
-                    list.current.classList.add("scrolled-top");
-                    list.current.classList.add("scrolled-bottom");
-                    break;
-            }
-        } else {
-            list.current.classList.remove("scrolled-top");
-            list.current.classList.remove("scrolled-bottom");
-        }
-    }
-    useEffect(() => scrollEffect());
+    useEffect(() => scrollShadowEffect(list.current, "plans-list"));
     // variables
     const editBtn = <Icon type="edit" click={startEdit} />;
     const planDescription =
@@ -90,15 +95,14 @@ function Plans() {
             ) : (
                 <h3>Усі плани</h3>
             )}
-            <ul
-                ref={list}
+            <AdaptiveList
+                dataSource={tasks}
+                renderItem={(plan) => (
+                    <Plan plan={plan} />
+                )}
                 className="plans-list"
-                onScroll={() => scrollEffect()}
-            >
-                {tasks.map((plan) => (
-                    <Plan key={plan.id} plan={plan} />
-                ))}
-            </ul>
+                itemClass="plan"
+            />
             <AddPlan />
             {path.length && !editing ? editBtn : null}
         </section>
@@ -107,52 +111,6 @@ function Plans() {
 Plans.propTypes = {
     plans: PropTypes.arrayOf(PropTypes.object),
 };
-
-
-
-// const planForm = {path.length ? (
-//                 editTitle ? (
-//                     <input
-//                         type="text"
-//                         name="title"
-//                         value={title}
-//                         onChange={(e) => changeTitle(e.target.value)}
-//                         onKeyDown={(event) => saveEdits(event)}
-//                     />
-//                 ) : (
-//                     <h3 onDoubleClick={() => activateTitle(true)}>
-//                         {plan?.title}
-//                     </h3>
-//                 )
-//             ) : (
-//                 <h3>Усі плани</h3>
-//             )}
-
-//             <p className="plans-description">
-//                 {path.length ? (
-//                     editDescription ? (
-//                         <textarea
-//                             ref={ref}
-//                             name="description"
-//                             className="autosize"
-//                             onChange={(e) => changeDescription(e.target.value)}
-//                             onKeyDown={(event) => saveEdits(event)}
-//                             defaultValue={description}
-//                             rows="1"
-//                         />                        
-//                     ) : plan.description ? (
-//                         <span onDoubleClick={() => activateDescription(true)}>
-//                             {plan.description}
-//                         </span>
-//                     ) : (
-//                         <p
-//                             className="add-plan-description"
-//                             onClick={() => activateDescription(true)}
-//                         >[Додати опис]</p>
-//                     )
-//                 ) : null}
-//             </p>
-
 
 
 export default Plans;

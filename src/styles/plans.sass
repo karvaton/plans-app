@@ -1,4 +1,5 @@
 @use 'constants'
+@use 'ext'
 
 #plans-list
     border: solid 1px #fff
@@ -58,8 +59,6 @@
 ul.plans-list
     margin: 0
     padding: 0
-    display: block
-    overflow: auto
     position: relative
     &::before, &::after
         content: ''
@@ -73,12 +72,14 @@ ul.plans-list
         top: -3px
     &::after
         bottom: -3px
-    &.scrolled-top
-        &::before
-            opacity: 1
-    &.scrolled-bottom
-        &::after
-            opacity: 1
+    @for $i from 1 through 10
+        &.scrolled-top-#{$i*10}
+            &::before
+                opacity: ($i*10)/100
+    @for $i from 1 through 10
+        &.scrolled-bottom-#{$i*10}
+            &::after
+                opacity: ($i*10)/100    
         
 
 
@@ -156,8 +157,15 @@ span.add-plan-description
     .task-done
         text-decoration: line-through
 
-    progress
+    .progress-bar
         margin: 0 10px
+        progress
+            margin: 0 10px
+        span
+            font-size: 14px
+        // > div
+            
+
 
 
 

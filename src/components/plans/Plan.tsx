@@ -1,9 +1,12 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { check, openPath, remove } from "../../state/actions/plans";
-import ProgressBar from "./Progres";
 import Task from "./Task";
 import { State } from '../../constants/interfaces';
 import { PlanProps } from "../../constants/props";
+import ProgressBar from "./Progres";
+// import { Progress } from "antd";
+// import 'antd/dist/antd.css'
 
 
 function getTitle(text: string): string {
@@ -18,7 +21,7 @@ function Plan({plan}: PlanProps) {
     const checkedTasksNumber = tasks.filter(({checked}) => !!checked).length;
 
     return (
-        <li className="plan">
+        <>
             <h4>
                 <input
                     type="checkbox"
@@ -29,6 +32,18 @@ function Plan({plan}: PlanProps) {
             </h4>
             {title ? <p className="plan-description">{description || ""}</p> : null}
             {tasks.length ? <ProgressBar value={checkedTasksNumber} max={tasks.length} /> : null}
+            {/* tasks.length ? 
+                <div className="progress-bar">
+                    <Progress
+                        strokeColor={{
+                            '0%': '#108ee9',
+                            '100%': '#87d068',
+                        }}
+                        percent={Math.round(checkedTasksNumber * 100 / tasks.length)}
+                        trailColor={'#efefef'}
+                    />
+                </div>
+                : null */}
             {tasks.length ? (
                 <ol>
                     <u>Задачі</u>
@@ -43,7 +58,7 @@ function Plan({plan}: PlanProps) {
             >
                 <div>&#215;</div>
             </button>
-        </li>
+        </>
     );
 }
 

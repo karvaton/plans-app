@@ -2,6 +2,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 // стилі
 import "./styles/App.sass";
+import "./styles/common.sass";
 // компоненти
 // import Menu from "./components/Menu";
 import Content from "./components/Content";

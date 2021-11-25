@@ -1,0 +1,21 @@
+@use 'sass:color'
+
+@mixin set-color($color)
+    background-color: $color
+    border-color: darken($color, 5%)
+    @if lightness($color) < 60%
+        color: #fff//constants.light
+    @else 
+        color: #000//constants.dark-blue
+
+
+@mixin scroll-shadows($position)
+    @for $i from 0 through 10
+        &.scrolled-#{$position}-#{$i}
+            @if $position == top
+                &::before
+                    opacity: $i
+            @else 
+                &::after
+                    opacity: $i
+    
