@@ -18,3 +18,12 @@ export type ListProps = {
     itemClass: string
     ordered?: boolean
 }
+
+export type TextArea = {
+    onChange: (text: string) => void
+    className?: string
+    name?: string
+    value?: string
+    minRows?: number
+    maxRows?: number
+}

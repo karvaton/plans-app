@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { EditProps } from "../../constants/props";
+import TextArea from "../common/TextArea";
 
 
 function EditFrom(props: EditProps) {
@@ -15,11 +16,12 @@ function EditFrom(props: EditProps) {
                 onChange={e => changeTitle(e.target.value)} 
                 autoFocus 
             />
-            <div 
-                contentEditable="true"
-                className="plan-description" 
-                onInput={e => changeDescription(e.currentTarget.innerText)}
-                dangerouslySetInnerHTML={{__html: props.description || ''}}
+            <TextArea
+                onChange={changeDescription}
+                value={description}
+                className="plan-description"
+                minRows={1}
+                maxRows={3}
             />
             <div className="controll-buttons">
                 <input 

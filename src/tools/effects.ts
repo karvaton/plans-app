@@ -10,13 +10,17 @@ export function scrollShadowEffect(node: HTMLElement | null, exeptions: string):
             const bottomShadow = shadowEffectClass(fullHeight - visibleHeight - top, 'bottom');
             const classString = [exeptions, topShadow, bottomShadow].join(' ').trim();
             node.className = classString;
+        } else {
+            node.className = exeptions;
         }
     }
 }
 
 
 function shadowEffectClass(top: number, position: 'top' | 'bottom'): string {
-    const shadowValue = top < 4 ? 0 :
+    // console.log(top);
+    
+    const shadowValue = top <= 2 ? 0 :
                         top <= 50 ? 50 :
                         top > 100 ? 100
                         : Math.floor(top/10)*10;
