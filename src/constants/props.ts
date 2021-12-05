@@ -27,3 +27,15 @@ export type TextArea = {
     minRows?: number
     maxRows?: number
 }
+
+export type Progress = {
+    max: number
+    value: number
+    showInfo?: boolean
+    color?: string | string[]
+}
+
+export type Task = {
+    text: string
+    checked: boolean
+}

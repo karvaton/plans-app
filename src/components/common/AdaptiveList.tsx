@@ -4,7 +4,7 @@ import { scrollShadowEffect } from "../../tools/effects";
 
 
 function AdaptiveList({dataSource, renderItem, itemClass, className = "", ordered = false}: ListProps) {
-    const listRef = useRef(null);
+    const listRef = useRef<HTMLOListElement>(null);
       
     const classNameList: string[] = ["adaptive-list", "shadow-box", className]
     const joinedClassNames: string = classNameList.join(" ").trim();
