@@ -56,18 +56,21 @@
     
 .plan-header
     margin: 10px 15px
-    h3
+    h3, > p
         margin: 5px 0
         padding: 5px
+    .plan-header-title
+        font-size: 1.1em
     span
-        padding: 5px
         font-size: 14px
+
 
 // список планів
 ul.plans-list
     margin: 0
     padding: 0
     position: relative
+    scroll-behavior: smooth
     &::before, &::after
         content: ''
         display: block
@@ -93,22 +96,25 @@ ul.plans-list
 
 .plan, .add-plan
     background-color: constants.$light
-    // border: double 5px constants.$light
     border-radius: 3px
     padding: 5px 0
     color: constants.$dark
 
-span.add-plan-description
+span.add-plan-title, span.add-plan-description
     font-size: 12px
-    padding: 7px 5px
+    padding: 7px 0
     color: constants.$grey
     cursor: pointer
+span.add-plan-title
+    font-weight: 500
+
 
 
 .plan
     position: relative
-    box-shadow: 1px 1px 4px -1px constants.$dark
     margin: 10px
+    padding: 15px
+    box-shadow: 1px 1px 4px -1px constants.$dark
     &:first-child
         margin-top: 2px
     &:last-child
@@ -180,16 +186,39 @@ span.add-plan-description
 form.add-plan 
     // position: sticky
     // bottom: 10px
-    margin: 0 10px
+    margin: 10px
     display: flex
     align-items: center
+    gap: 5px
 
     input
         padding: 5px 10px
-        margin: 5px 0
+        border-radius: 3px
+        &[type=text]
+            border: solid 1px gray
+            &:focus
+                outline: none
+        &:not([type=text])
+            color: #fff
+            padding: 5px 15px
+            outline: none
+            transition: .3s
+            &:active
+                outline: solid 3px #05386b36 //виправити на sass-функцію
+        &[type=submit]
+            background-color: constants.$dark-blue
+            border: solid 1px constants.$dark-blue
+            opacity: 1
+            &:disabled
+                opacity: .5
+                background-color: #175da2 //виправити на sass-функцію
+        &[type=button]
+            background-color: constants.$grey
+            border: solid 1px constants.$grey
+
 
     .add-plan-title
         flex: 1
 
     .ok
-        margin: 5px
+        // margin: 5px

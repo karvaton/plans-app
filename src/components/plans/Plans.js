@@ -12,36 +12,6 @@ import { scrollShadowEffect } from '../../tools/effects';
 import AdaptiveList from '../common/AdaptiveList';
 
 
-// function scrollShadowEffect(ref, ...exeptions) {
-//     const fullHeight = ref.current.scrollHeight;
-//     const visibleHeight = ref.current.clientHeight;
-//     const top = ref.current.scrollTop;
-//     const scrolledList = fullHeight > visibleHeight;
-//     const classList = ref.current.classList;
-//     console.log(top);
-
-//     classList.forEach(classItem => {
-//         if (!exeptions.includes(classItem)) {
-//             classList.remove(classItem);
-//         }
-//     });
-//     if (scrolledList) {
-//         switch (Math.floor(top)) {
-//             case 0:
-//                 classList.add("scrolled-bottom");
-//                 break;
-//             case fullHeight - visibleHeight:
-//                 classList.add("scrolled-top");
-//                 break;
-//             default:
-//                 classList.add("scrolled-top");
-//                 classList.add("scrolled-bottom");
-//                 break;
-//         }
-//     }
-// }
-
-
 function Plans() {
     const plans = useSelector(state => state.plans);
     const path = useSelector(state => state.path);
@@ -67,14 +37,20 @@ function Plans() {
     useEffect(() => scrollShadowEffect(list.current, "plans-list"));
     // variables
     const editBtn = <Icon type="edit" click={startEdit} />;
-    const planDescription =
-        plan && plan.description ? (
-            <span onDoubleClick={() => startEdit()}>{plan.description}</span>
-        ) : (
-            <p onClick={() => startEdit()}>
-                <span className="add-plan-description">[Додати опис]</span>
-            </p>
-        );
+    const planTitle = plan?.title ? (
+        <span onDoubleClick={() => startEdit()} className="plan-header-title">{plan.title}</span>
+    ) : (
+        <span className="add-plan-title" onClick={() => startEdit()}>
+            [Додати заголовок]
+        </span>
+    );
+    const planDescription = plan?.description ? (
+        <span onDoubleClick={() => startEdit()}>{plan.description}</span>
+    ) : (
+        <span className="add-plan-description" onClick={() => startEdit()}>
+            [Додати опис]
+        </span>
+    );
 
     return (
         <section id="plans-list" className={path.length ? "active-plan" : ""}>
@@ -88,8 +64,8 @@ function Plans() {
                     />
                 ) : (
                     <div className="plan-header">
-                        <h3 onDoubleClick={() => startEdit()}>{plan.title}</h3>
-                        {planDescription}
+                        <h3>{planTitle}</h3>
+                        <p>{planDescription}</p>
                     </div>
                 )
             ) : (
@@ -97,9 +73,7 @@ function Plans() {
             )}
             <AdaptiveList
                 dataSource={tasks}
-                renderItem={(plan) => (
-                    <Plan plan={plan} />
-                )}
+                renderItem={(plan) => <Plan plan={plan} />}
                 className="plans-list"
                 itemClass="plan"
             />
