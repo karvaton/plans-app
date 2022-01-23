@@ -1,0 +1,21 @@
+@media screen and (max-width: 500px) {
+    form.add-plan {
+        display: grid;
+        grid-template-areas: "a a"
+                             "b c";
+        grid-template-columns: auto auto;
+    }
+
+    .add-plan .add-plan-title {
+        grid-area: a;
+        height: 30px;
+    }
+    .add-plan .ok {
+        grid-area: b;
+        height: 40px;
+    }
+    .add-plan .cancel {
+        grid-area: c;
+        height: 40px;
+    }
+}
